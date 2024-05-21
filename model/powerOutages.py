@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
+
 @dataclass
 class Event:
     _id: int
@@ -61,6 +62,14 @@ class Event:
         return (f"id={self._id}, customers_affected={self._customers_affected} "
                 f"start_time={self._date_event_began}, end_time= {self._date_event_finished}")
 
+    def __repr__(self):
+        return f"id={self._id}"
+
     def __hash__(self):
         return hash(self._id)
 
+    def nOre(self):
+        return ((self._date_event_finished - self._date_event_began).total_seconds())/3600
+
+    def anno(self):
+        return int(self._date_event_finished.year)
